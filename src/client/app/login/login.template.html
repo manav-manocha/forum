@@ -1,0 +1,53 @@
+<div class="container">
+  <main id="content" class="widget-login-container" role="main">
+    <div class="row">
+      <div class="col-xl-4 col-md-6 col-xs-10 offset-xl-4 offset-md-3 offset-xs-1">
+        <h5 class="widget-login-logo animated fadeInUp">
+          <i class="fa fa-circle text-gray"></i>
+           comproDLS App Seed V2
+          <i class="fa fa-circle text-warning"></i>
+        </h5>
+        <section class="widget widget-login animated fadeInUp">
+          <header>
+            <h3>Login to your App</h3>
+          </header>
+          <div class="widget-body">
+            <form class="login-form mt-lg" (ngSubmit)="loginform.valid && login()" #loginform="ngForm" novalidate>
+              <div class="alert alert-danger error-message" *ngIf="errorMessage">{{errorMessage}}</div>
+              <div class="form-group">
+                <input class="form-control" id="org" type="text" placeholder="Organisation" [(ngModel)] = "user.organisation" name = "organisation" #organisation = "ngModel" required>
+                <div class="field-validation-error" *ngIf="loginform.submitted && organisation.control.hasError('required')">Please enter organisation</div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="username" placeholder="Username" [(ngModel)] = "user.username" name = "username" #username = "ngModel" required>
+                <div class="field-validation-error" *ngIf="loginform.submitted && username.control.hasError('required')">Please enter username</div>
+              </div>
+              <div class="form-group">
+                <input class="form-control" id="pswd" type="password" placeholder="Password" [(ngModel)] = "user.password" name = "password" #password = "ngModel" required>
+                <div class="field-validation-error" *ngIf="loginform.submitted && password.control.hasError('required')">Please enter password</div>
+              </div>
+              <div class="clearfix">
+                <div class="btn-toolbar pull-xs-right m-t-1">
+                  <button type="submit" class="btn btn-inverse btn-sm login-button" >Login</button>
+                </div>
+              </div>
+              <div class="row m-t-1">
+                <div class="col-md-6 push-md-6">
+                  <div class="clearfix">
+                    <div class="abc-checkbox widget-login-info pull-xs-right">
+                      <input type="checkbox" id="checkbox1" value="1" [(ngModel)] = "user.staySignIn" name = "staySignIn">
+                      <label for="checkbox1">Keep me signed in </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer">
+    comproDLS © 2015-2016
+  </footer>
+</div>
