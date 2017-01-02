@@ -1,0 +1,46 @@
+<div>Welcome to Forum</div>
+
+<div *ngIf="forumKeys && forumData">
+    <table class="table">
+        <thead>
+            <tr>
+              <td>Topic</td>
+              <td>Post</td>
+              <td>Author</td>
+              <td>Replies</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of forumData">
+                <td>{{data.topic}}</td>
+                <td>{{data.text}}</td>
+                <td>{{data.author}}</td>
+                <td>{{data.created | date:'mediumDate'}}</td>
+                <td>{{data.replies.length}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="btn btn-primary"  data-toggle="modal" data-target="#myModal">Create New Post</div>
+
+<!-- Modal -->
+<div #myModal id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Post</h4>
+      </div>
+      <div class="modal-body">
+        <add-post-form (postSubmitted)="getPosts()"></add-post-form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
